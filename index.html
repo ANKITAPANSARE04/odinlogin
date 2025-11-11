@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Odin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        .error-message {
+            @apply text-red-600 text-xs mt-1 ml-1 hidden;
+        }
+        /* Custom background image for the left panel */
+        .bg-ferns {
+            background-image: url('https://placehold.co/400x800/223322/ffffff/jpg?text=Forest+Ferns');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+
+    <!-- 
+    //==========================================
+    // Left Panel (Hidden on Mobile)
+    //==========================================
+    -->
+    <div class="hidden md:flex md:w-1/3 bg-ferns relative items-end p-8">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <div class="relative flex items-center space-x-4 text-white z-10 w-full justify-center">
+            <!-- Custom SVG for Odin Logo Placeholder -->
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 11.19c-2.73 0-5.32 1.34-6.84 3.7C4.12 17.56 5.27 22 12 22s7.88-4.44 6.84-7.11c-1.52-2.36-4.11-3.7-6.84-3.7z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 2a4 4 0 00-4 4v2h8V6a4 4 0 00-4-4z"/>
+            </svg>
+            <span class="text-4xl font-bold tracking-widest uppercase">ODIN</span>
+        </div>
+    </div>
+
+    <!-- 
+    //==========================================
+    // Right Panel (Form Content)
+    //==========================================
+    -->
+    <div class="w-full md:w-2/3 flex flex-col justify-center bg-gray-50">
+        <div class="max-w-4xl mx-auto px-8 py-12 md:p-16">
+
+            <!-- Marketing Text Section -->
+            <div class="mb-12">
+                <p class="text-xl font-semibold mb-4 text-gray-800">
+                    <span class="italic font-bold">This is not a real online service!</span> You know you need something like this in your life to help you realize your deepest dreams. <span class="font-bold">Sign up now</span> to get started.
+                </p>
+                <p class="text-xl font-bold text-gray-800">
+                    You <span class="italic">know</span> you want to.
+                </p>
+            </div>
+
+            <!-- Form Section -->
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Let's do this!</h2>
+
+            <form id="signup-form" class="space-y-6 bg-white p-6 shadow-xl rounded-xl" onsubmit="return validateForm(event)">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+
+                    <!-- First Name -->
+                    <div>
+                        <label for="first-name" class="block text-xs font-bold uppercase text-gray-500 mb-1">First Name</label>
+                        <input type="text" id="first-name" name="firstName" placeholder="Thor" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 required-field" aria-required="true" required>
+                        <p id="error-first-name" class="error-message">First Name is required.</p>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div>
+                        <label for="last-name" class="block text-xs font-bold uppercase text-gray-500 mb-1">Last Name</label>
+                        <input type="text" id="last-name" name="lastName" placeholder="Odinson" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 required-field" aria-required="true" required>
+                        <p id="error-last-name" class="error-message">Last Name is required.</p>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-xs font-bold uppercase text-gray-500 mb-1">Email</label>
+                        <input type="email" id="email" name="email" placeholder="example@asgard.com" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 required-field" aria-required="true" required>
+                        <p id="error-email" class="error-message">A valid Email is required.</p>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div>
+                        <label for="phone" class="block text-xs font-bold uppercase text-gray-500 mb-1">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="123-456-7890" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 required-field" aria-required="true" required>
+                        <p id="error-phone" class="error-message">Phone Number is required.</p>
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="password" class="block text-xs font-bold uppercase text-gray-500 mb-1">Password</label>
+                        <input type="password" id="password" name="password" class="w-full p-2 border border-red-500 rounded-md focus:outline-none focus:border-blue-500 required-field" aria-required="true" required>
+                        <p id="error-password" class="error-message">Password is required.</p>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <label for="confirm-password" class="block text-xs font-bold uppercase text-gray-500 mb-1">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirmPassword" class="w-full p-2 border border-red-500 rounded-md focus:outline-none focus:border-blue-500 required-field" aria-required="true" required>
+                        <p id="error-confirm-password" class="error-message">Passwords do not match.</p>
+                    </div>
+
+                </div>
+            </form>
+
+            <!-- Submission Button and Login Link -->
+            <div class="mt-8 pl-6">
+                <button type="submit" form="signup-form" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300">
+                    Create Account
+                </button>
+                <p class="mt-6 text-gray-700">
+                    Already have an account? <a href="#" class="text-green-700 font-bold hover:underline">Log in</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 
+    //==========================================
+    // JavaScript for Form Validation
+    //==========================================
+    -->
+    <script>
+        function validateForm(event) {
+            const form = document.getElementById('signup-form');
+            const requiredFields = form.querySelectorAll('.required-field');
+            const passwordField = document.getElementById('password');
+            const confirmPasswordField = document.getElementById('confirm-password');
+            let isValid = true;
+
+            // 1. Reset all error states
+            requiredFields.forEach(field => {
+                field.classList.remove('border-red-500');
+                const errorElement = document.getElementById(`error-${field.id}`);
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+            });
+
+            // 2. Check for required fields
+            requiredFields.forEach(field => {
+                if (field.value.trim() === '') {
+                    field.classList.add('border-red-500');
+                    const errorElement = document.getElementById(`error-${field.id}`);
+                    if (errorElement) {
+                        errorElement.style.display = 'block';
+                    }
+                    isValid = false;
+                }
+            });
+
+            // 3. Check for password match
+            if (passwordField.value !== confirmPasswordField.value) {
+                confirmPasswordField.classList.add('border-red-500');
+                passwordField.classList.add('border-red-500');
+
+                const passwordError = document.getElementById('error-password');
+                const confirmError = document.getElementById('error-confirm-password');
+
+                if (passwordField.value.trim() === '') {
+                    // If password is empty, let the required field check handle the error message
+                } else {
+                    // Only show password mismatch if password is not empty
+                    confirmError.textContent = 'Passwords do not match.';
+                    confirmError.style.display = 'block';
+                    passwordError.textContent = 'Passwords do not match.';
+                    passwordError.style.display = 'block';
+                }
+
+                isValid = false;
+            } else if (passwordField.value.trim() !== '' && confirmPasswordField.value.trim() !== '') {
+                 // Passwords match and are filled, reset their custom mismatch error state
+                passwordField.classList.remove('border-red-500');
+                confirmPasswordField.classList.remove('border-red-500');
+                document.getElementById('error-password').style.display = 'none';
+                document.getElementById('error-confirm-password').style.display = 'none';
+            }
+
+
+            if (!isValid) {
+                event.preventDefault(); // Stop form submission if validation fails
+                console.log("Validation failed. Please check the fields.");
+            } else {
+                // In a real application, you would send the data here.
+                // For this example, we just prevent submission to show success state in console.
+                event.preventDefault();
+                console.log("Form submitted successfully!");
+
+                // You could display a success message here instead of submitting.
+                const successMessage = document.createElement('div');
+                successMessage.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center';
+                successMessage.innerHTML = `
+                    <div class="bg-white p-6 rounded-lg shadow-2xl text-center">
+                        <h3 class="text-xl font-bold text-green-700 mb-2">Success!</h3>
+                        <p class="text-gray-700">Form validation passed. (Not actually submitting to a server)</p>
+                        <button onclick="this.parentNode.parentNode.remove()" class="mt-4 bg-green-700 text-white px-4 py-2 rounded-md">Close</button>
+                    </div>
+                `;
+                document.body.appendChild(successMessage);
+            }
+
+            return isValid;
+        }
+
+        // Initially ensure the password fields have the error border as per the image
+        window.onload = () => {
+             document.getElementById('password').classList.add('border-red-500');
+             document.getElementById('confirm-password').classList.add('border-red-500');
+        };
+
+    </script>
+</body>
+</html>
