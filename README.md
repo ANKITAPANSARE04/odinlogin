@@ -1,3 +1,3 @@
-https://github.com/ANKITAPANSARE04/odinlogin/deployments/github-pages
+LiveSite
 
-live site
+https://ankitapansare04.github.io/odinlogin/
